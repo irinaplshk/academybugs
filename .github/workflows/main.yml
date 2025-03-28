@@ -20,7 +20,7 @@ jobs:
     # задаем окружение
     runs-on: ubuntu-latest
     environment:
-     name: ${{ github.ref == 'refs/heads/main' && 'Main'  }}
+     name: ${{ github.ref == 'refs/heads/test' && 'Test' || github.ref == 'refs/heads/main' && 'Main' }}
     steps:
     # делаем чекаут
       - uses: actions/checkout@v4
