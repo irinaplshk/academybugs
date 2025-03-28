@@ -34,9 +34,10 @@ jobs:
       - name: Print BASE_URL
         run: echo "BASE_URL is ${{ github.event.inputs.BaseUrl }}"
       - name: Run PW test
-        run: npm run test
         env:
          BASE_URL: ${{ github.event.inputs.BaseUrl }}
+        run: npm run test
+        
     # сохраняем отчет pw
       - uses: actions/upload-artifact@v4
         if: always()
