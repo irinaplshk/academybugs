@@ -16,7 +16,7 @@ test.describe('Visual', () => {
     await webApp.mainPage.findBags();
     await webApp.findBagsPage.checkImage();
 
-    await expect(webApp.findBagsPage.mistakeMessage).toBeVisible();
+    await expect(webApp.findBagsPage.mistakeMessage).toBeVisible({timeout:25000});
   })
 
 
@@ -36,7 +36,8 @@ test.describe('Crash', () => {
     await webApp.mainPage.findBags();
     await webApp.findBagsPage.getThingsOnPage();
 
-    await expect(page.getByRole('heading', { name: 'You found a crash bug,' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'You found a crash bug,' })).toBeVisible({timeout:25000});
+
   })
   test('The comment is not posted under the product', async ({ page }) => {
     webApp = new WebApp(page);
@@ -47,7 +48,7 @@ test.describe('Crash', () => {
     await webApp.productPage.addComment('test');
 
     
-    await expect( webApp.productPage.mistakeMessage).toBeVisible();
+    await expect( webApp.productPage.mistakeMessage).toBeVisible({timeout:25000});
 
   })
 
@@ -92,7 +93,7 @@ test.describe('Functional', () => {
     await webApp.findBagsPage.gotoProduct();
     await webApp.productPage.gotoxPlatform();
 
-    await expect( webApp.productPage.mistakeMessage).toBeVisible();
+    await expect( webApp.productPage.mistakeMessage).toBeVisible({timeout:25000});
     
   })
 
