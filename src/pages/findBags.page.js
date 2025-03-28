@@ -8,6 +8,7 @@ export class FindBagsPage  {
     this.addToCartButton  = page.locator('#ec_add_to_cart_4');
     this.checkOutButton   =   page.getByRole('link', { name: 'CHECKOUT NOW' });
     this.productClick     = page.locator('#ec_product_image_effect_4481370').getByRole('link');
+    this.mistakeMessage   = page.getByRole('heading', { name: 'What did you find out?' });
   }
   async checkImage() {
     await this.imageClick.click();
