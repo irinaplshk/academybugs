@@ -19,7 +19,8 @@ jobs:
     timeout-minutes: 60
     # задаем окружение
     runs-on: ubuntu-latest
-    environment: Main
+    environment:
+     name: ${{ github.ref == 'refs/heads/main' && 'environmentPPE'  }}
     steps:
     # делаем чекаут
       - uses: actions/checkout@v4
