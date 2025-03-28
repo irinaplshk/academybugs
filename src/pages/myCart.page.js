@@ -4,7 +4,8 @@ export class MyCartPage {
        //this.addAmountButton = page.locator('#ec_cartitem_updating_1912632').getByRole('button', { name: '+' });
         this.addAmountButton  =  page.locator('.ec_plus_column .ec_plus');
         this.updateButton =    page.getByText('UPDATE');
-        this.updateIcon   = page.locator('.ec_cartitem_updating')
+        this.updateIcon   = page.locator('.ec_cartitem_updating');
+        this.mistakeMessage = page.locator('#popmake-4406');
 
     }
 

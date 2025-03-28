@@ -16,7 +16,7 @@ test.describe('Visual', () => {
     await webApp.mainPage.findBags();
     await webApp.findBagsPage.checkImage();
 
-    await expect(page.getByRole('heading', { name: 'What did you find out?' })).toBeVisible();
+    await expect(webApp.findBagsPage.mistakeMessage).toBeVisible();
   })
 
 
@@ -47,7 +47,7 @@ test.describe('Crash', () => {
     await webApp.productPage.addComment('test');
 
     
-    await expect(page.getByRole('heading', { name: 'What did you find out?' })).toBeVisible({timeout: 25000});
+    await expect( webApp.productPage.mistakeMessage).toBeVisible();
 
   })
 
@@ -65,7 +65,7 @@ test.describe('Functional', () => {
     await webApp.findBagsPage.addToCart();
     await webApp.findBagsPage.gotoCart();
     await webApp.myCartPage.updateAmountToThree();
-    await expect(page.locator('#popmake-4406')).toContainText('In this bug, the product quantity cannot be increased past 2.');
+    await expect(webApp.myCartPage.mistakeMessage).toContainText('In this bug, the product quantity cannot be increased past 2.');
   })
 
   test('The manufacturer link does not show an appropriate page', async ({ page }) => {
@@ -77,7 +77,7 @@ test.describe('Functional', () => {
     await webApp.mainPage.findBags();
     await webApp.findBagsPage.gotoProduct();
     await webApp.productPage.gotoProductLink();
-    await expect(page.locator('#sq-content')).toContainText('Oops! That page can’t be found.');
+    await expect(webApp.productPage.mistakeMessageLinkPage).toContainText('Oops! That page can’t be found.');
     
   });
 
@@ -90,8 +90,9 @@ test.describe('Functional', () => {
     await webApp.mainPage.clickButtonClose();
     await webApp.mainPage.findBags();
     await webApp.findBagsPage.gotoProduct();
+    await webApp.productPage.gotoxPlatform();
 
-    
+    await expect( webApp.productPage.mistakeMessage).toBeVisible();
     
   })
 

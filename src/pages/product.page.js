@@ -5,7 +5,9 @@ export class ProductPage {
         this.postCommentButton = page.getByRole('button', { name: 'Post Comment' });
         this.productLink       =page.getByRole('link', { name: 'DNK' });
         this.xPlatformLink =  page.getByRole('link', { name: 'X', exact: true })
-
+        this.mistakeMessage   = page.getByRole('heading', { name: 'What did you find out?' });
+        this.mistakeMessageLinkPage = page.locator('#sq-content');
+  
     }
 
     async addComment(text) {
