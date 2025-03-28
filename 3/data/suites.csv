@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2213","The selected number of results is not desplayed","chromium","Fri Mar 28 07:30:23 GMT 2025","passed","Fri Mar 28 07:30:25 GMT 2025","Crash","test.spec.js","",""
+"","2592","The twitter share button should show an appropriate page to share the product on Twitter","chromium","Fri Mar 28 07:30:50 GMT 2025","passed","Fri Mar 28 07:30:53 GMT 2025","Functional","test.spec.js","",""
+"","12775","The comment is not posted under the product","chromium","Fri Mar 28 07:30:25 GMT 2025","passed","Fri Mar 28 07:30:38 GMT 2025","Crash","test.spec.js","",""
+"","3578","The manufacturer link does not show an appropriate page","chromium","Fri Mar 28 07:30:47 GMT 2025","passed","Fri Mar 28 07:30:50 GMT 2025","Functional","test.spec.js","",""
+"","9305","The product quantity can not be encreased","chromium","Fri Mar 28 07:30:38 GMT 2025","passed","Fri Mar 28 07:30:47 GMT 2025","Functional","test.spec.js","",""
+"","4360","The product image fills the box entirely just like all other product images","chromium","Fri Mar 28 07:30:18 GMT 2025","passed","Fri Mar 28 07:30:22 GMT 2025","Visual","test.spec.js","",""
