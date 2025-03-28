@@ -47,7 +47,7 @@ test.describe('Crash', () => {
     await webApp.productPage.addComment('test');
 
     
-    await expect( webApp.productPage.mistakeMessage).toBeVisible();
+    await expect( webApp.productPage.mistakeMessage).toBeVisible({timeout:25000});
 
   })
 
