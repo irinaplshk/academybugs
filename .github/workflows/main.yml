@@ -7,6 +7,11 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
+   inputs:
+     BaseUrl:
+        description: 'this is URL for tests'
+        required : true
+        default: 'https://academybugs.com/'
 # Сама джобы
 jobs:
   #название джобы
