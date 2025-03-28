@@ -1,0 +1,257 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Crash >> The comment is not posted under the product
+- Location: /home/runner/work/academybugs/academybugs/tests/test.spec.js:41:7
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+
+Locator: getByRole('heading', { name: 'What did you find out?' })
+Expected: visible
+Received: <element(s) not found>
+Call log:
+  - expect.toBeVisible with timeout 5000ms
+  - waiting for getByRole('heading', { name: 'What did you find out?' })
+
+    at /home/runner/work/academybugs/academybugs/tests/test.spec.js:50:54
+```
+
+# Page snapshot
+
+```yaml
+- dialog "cookieconsent":
+  - text: "We use cookies to optimize our website and our service:"
+  - link "Cookie Policy"
+  - button "Functional only"
+  - button "Accept cookies"
+- link "Skip to content"
+- banner:
+  - heading "AcademyBugs.com" [level=3]:
+    - link "AcademyBugs.com"
+  - navigation:
+    - list:
+      - listitem:
+        - link "Examples of Bugs"
+      - listitem:
+        - link "Types of Bugs"
+      - listitem:
+        - link "Find Bugs"
+      - listitem:
+        - link "Report Bugs"
+      - listitem:
+        - link ""
+- main:
+  - article:
+    - heading "Home / Shop / All Items" [level=4]:
+      - link "Home"
+      - text: /
+      - link "Shop"
+      - text: /
+      - link "All Items"
+    - img "DNK Yellow Shoes"
+    - heading "Home / Shop / All Items" [level=4]:
+      - link "Home"
+      - text: /
+      - link "Shop"
+      - text: /
+      - link "All Items"
+    - heading "DNK Yellow Shoes" [level=1]
+    - text: "$45.00 Model Number: 4481370 Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit sed."
+    - button "-"
+    - spinbutton: "1"
+    - button "+"
+    - button "ADD TO CART"
+    - text: "Manufacturer:"
+    - link "DNK"
+    - link "Facebook":
+      - img "Facebook"
+    - link "X":
+      - img "X"
+    - link "Email":
+      - img "Email"
+    - link "Pinterest":
+      - img "Pinterest"
+    - link "LinkedIn":
+      - img "LinkedIn"
+    - link "MySpace":
+      - img "MySpace"
+    - list:
+      - listitem: Description
+    - paragraph: Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit sed.
+  - heading "Leave a Reply" [level=3]
+  - paragraph: Your email address will not be published. Required fields are marked *
+  - paragraph:
+    - textbox "Comment": test
+  - paragraph:
+    - textbox "Name*"
+  - paragraph:
+    - textbox "Email*"
+  - paragraph:
+    - textbox "Website"
+  - paragraph:
+    - button "Post Comment"
+- heading "Select a Currency" [level=4]
+- combobox:
+  - option "USD" [selected]
+  - option "EUR"
+  - option "GBP"
+  - option "JPY"
+- heading "Product Search" [level=4]
+- combobox
+- button "Search"
+- heading "Hot Item" [level=4]
+- link:
+  - img
+- link "Anchor Bracelet"
+- text: $275.00
+- heading "Store Menu" [level=4]
+- list:
+  - listitem:
+    - link "All Items"
+  - listitem:
+    - link "Accessories [+]"
+  - listitem:
+    - link "Fashion Type [+]"
+  - listitem:
+    - link "Women's Pants"
+- heading "Filter by Price" [level=4]
+- link "$15.00 - $19.99 (1)"
+- link "$25.00 - $49.99 (2)"
+- link "$50.00 - $99.99 (3)"
+- link "$100.00 - $299.99 (11)"
+- link "Greater Than $299.99 (1)"
+- heading "Shopping Cart" [level=4]
+- link "Shopping Cart (0)"
+- heading "Your Account" [level=4]
+- text: Email Address*
+- textbox
+- text: Password*
+- textbox
+- paragraph:
+  - link "Sign Up"
+- button "SIGN IN"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "uTest":
+        - img "uTest"
+    - listitem:
+      - link "Terms & Conditions"
+    - listitem:
+      - link "Privacy Policy"
+- link ""
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 | import { WebApp } from '../src/pages/webApp.page';
+   3 |
+   4 | let webApp;
+   5 |
+   6 | test.describe('Visual', () => {
+   7 |
+   8 |
+   9 |   test('The product image fills the box entirely just like all other product images', async ({ page }) => {
+   10 |
+   11 |
+   12 |     webApp = new WebApp(page);
+   13 |
+   14 |     await webApp.mainPage.open();
+   15 |     await webApp.mainPage.clickButtonClose();
+   16 |     await webApp.mainPage.findBags();
+   17 |     await webApp.findBagsPage.checkImage();
+   18 |
+   19 |     await expect(webApp.findBagsPage.mistakeMessage).toBeVisible();
+   20 |   })
+   21 |
+   22 |
+   23 | });
+   24 |
+   25 |
+   26 | test.describe('Crash', () => {
+   27 |
+   28 |
+   29 |   test('The selected number of results is not desplayed ', async ({ page }) => {
+   30 |
+   31 |
+   32 |     webApp = new WebApp(page);
+   33 |
+   34 |     await webApp.mainPage.open();
+   35 |     await webApp.mainPage.clickButtonClose();
+   36 |     await webApp.mainPage.findBags();
+   37 |     await webApp.findBagsPage.getThingsOnPage();
+   38 |
+   39 |     await expect(page.getByRole('heading', { name: 'You found a crash bug,' })).toBeVisible();
+   40 |   })
+   41 |   test('The comment is not posted under the product', async ({ page }) => {
+   42 |     webApp = new WebApp(page);
+   43 |     await webApp.mainPage.open();
+   44 |     await webApp.mainPage.clickButtonClose();
+   45 |     await webApp.mainPage.findBags();
+   46 |     await webApp.findBagsPage.gotoProduct();
+   47 |     await webApp.productPage.addComment('test');
+   48 |
+   49 |     
+>  50 |     await expect( webApp.productPage.mistakeMessage).toBeVisible();
+      |                                                      ^ Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
+   51 |
+   52 |   })
+   53 |
+   54 | });
+   55 |
+   56 |
+   57 | test.describe('Functional', () => {
+   58 |
+   59 |   test('The product quantity can not be encreased', async ({ page }) => {
+   60 |     webApp = new WebApp(page);
+   61 |
+   62 |     await webApp.mainPage.open();
+   63 |     await webApp.mainPage.clickButtonClose();
+   64 |     await webApp.mainPage.findBags();
+   65 |     await webApp.findBagsPage.addToCart();
+   66 |     await webApp.findBagsPage.gotoCart();
+   67 |     await webApp.myCartPage.updateAmountToThree();
+   68 |     await expect(webApp.myCartPage.mistakeMessage).toContainText('In this bug, the product quantity cannot be increased past 2.');
+   69 |   })
+   70 |
+   71 |   test('The manufacturer link does not show an appropriate page', async ({ page }) => {
+   72 |     
+   73 |
+   74 |     webApp = new WebApp(page);
+   75 |     await webApp.mainPage.open();
+   76 |     await webApp.mainPage.clickButtonClose();
+   77 |     await webApp.mainPage.findBags();
+   78 |     await webApp.findBagsPage.gotoProduct();
+   79 |     await webApp.productPage.gotoProductLink();
+   80 |     await expect(webApp.productPage.mistakeMessageLinkPage).toContainText('Oops! That page can’t be found.');
+   81 |     
+   82 |   });
+   83 |
+   84 |   
+   85 |   test('The twitter share button should show an appropriate page to share the product on Twitter', async ({ page }) => {
+   86 |     
+   87 |
+   88 |     webApp = new WebApp(page);
+   89 |     await webApp.mainPage.open();
+   90 |     await webApp.mainPage.clickButtonClose();
+   91 |     await webApp.mainPage.findBags();
+   92 |     await webApp.findBagsPage.gotoProduct();
+   93 |     await webApp.productPage.gotoxPlatform();
+   94 |
+   95 |     await expect( webApp.productPage.mistakeMessage).toBeVisible();
+   96 |     
+   97 |   })
+   98 |
+   99 |   
+  100 | })
+```
