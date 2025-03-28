@@ -31,6 +31,8 @@ jobs:
     # устанавливаем PW
       - name: Install PW
         run: npx playwright install --with-deps
+      - name: Print BASE_URL
+        run: echo "BASE_URL is ${{ github.event.inputs.BaseUrl }}"
       - name: Run PW test
         run: npm run test
         env:
