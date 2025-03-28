@@ -19,6 +19,7 @@ jobs:
     timeout-minutes: 60
     # задаем окружение
     runs-on: ubuntu-latest
+    environment: Main
     steps:
     # делаем чекаут
       - uses: actions/checkout@v4
